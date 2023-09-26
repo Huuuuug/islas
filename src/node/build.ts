@@ -4,18 +4,25 @@ import ora from 'ora';
 import * as path from 'path';
 import fs from 'fs-extra';
 import { pathToFileURL } from 'url';
+import pluginReact from '@vitejs/plugin-react';
 
 import type { RollupOutput } from 'rollup';
+import { SiteConifg } from 'shared/types';
+import { pluginConfig } from './plugin-islas/config';
 
 // const dynamicImport = new Function('m', 'return import(m)')
 
 export const okMark = '\x1b[32m✓\x1b[0m';
 
-export async function bundle(root: string) {
+export async function bundle(root: string, config: SiteConifg) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => {
     return {
       mode: 'production',
       root,
+      plugins: [pluginReact(), pluginConfig(config)],
+      ssr: {
+        noExternal: ['react-router-dom']
+      },
       build: {
         ssr: isServer,
         outDir: isServer ? '.temp' : 'build',
@@ -78,12 +85,12 @@ export async function renerPage(
   await fs.remove(path.join(root, '.temp'));
 }
 
-export async function build(root: string) {
+export async function build(root: string = process.cwd(), config: SiteConifg) {
   const spinner = ora();
   spinner.start('building client + server bundles...');
 
   // 1. bundle -client 端 + server 端
-  const [clientBundle] = await bundle(root);
+  const [clientBundle] = await bundle(root, config);
   // 2. 引入 server-entry 模块
   const serverEntryPath = path.join(root, '.temp', 'ssr-entry.js');
   // 3. 服务端渲染,产出 HTML

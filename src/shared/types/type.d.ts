@@ -3,3 +3,9 @@ declare module 'islas:site-data' {
   const siteData: UserConfig;
   export default siteData;
 }
+
+declare module 'islas:routes' {
+  import { RouteObject } from 'react-router-dom';
+  const routes: RouteObject[];
+  export { routes };
+}

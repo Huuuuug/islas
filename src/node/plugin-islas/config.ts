@@ -1,4 +1,5 @@
-import { relative } from 'path';
+import { PACKAGE_ROOT } from 'node/constants';
+import { join, relative } from 'path';
 import type { SiteConifg } from 'shared/types';
 import type { Plugin } from 'vite';
 
@@ -6,7 +7,7 @@ const SITE_DATA_ID = 'islas:site-data';
 
 export function pluginConfig(
   config: SiteConifg,
-  restart: () => Promise<void>
+  restartServer?: () => Promise<void>
 ): Plugin {
   return {
     name: 'islas:site-data',
@@ -20,9 +21,16 @@ export function pluginConfig(
         return `export default ${JSON.stringify(config.siteData)}`;
       }
     },
+    config() {
+      return {
+        resolve: {
+          alias: {
+            '@runtime': join(PACKAGE_ROOT, 'src', 'runtime', 'index.ts')
+          }
+        }
+      };
+    },
     async handleHotUpdate(ctx) {
-      console.log(11);
-
       const customWatchedFiles = [config.configPath.replaceAll('\\', '/')];
       const include = (id: string) =>
         customWatchedFiles.some((file) => id.includes(file));
@@ -35,7 +43,7 @@ export function pluginConfig(
         // await server.restart()
         // × 无效 因为没有进行Islas框架的配置重新读取
         // 2. 手动调用dev.ts 中的 createServer
-        await restart();
+        await restartServer();
       }
     }
   };
