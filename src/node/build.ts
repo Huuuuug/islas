@@ -45,7 +45,6 @@ export async function bundle(root: string) {
     return [clientBundle, serverBundle];
   } catch (error) {
     console.log(error);
-    console.log(11);
   }
 }
 export async function renerPage(

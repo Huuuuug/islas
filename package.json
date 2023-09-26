@@ -8,13 +8,16 @@
     "start": "tsup --watch",
     "build": "tsup",
     "preview": "cd build && serve .",
-    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./"
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "prepare:e2e": "tsx scripts/prepare-e2e.ts"
   },
   "bin": {
     "islas": "bin/islas.js"
   },
   "lint-staged": {
-    "**/*.{js,jsx,tsx,ts}" :[
+    "**/*.{js,jsx,tsx,ts}": [
       "pnpm run lint"
     ]
   },
@@ -24,6 +27,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@playwright/test": "1.26.1",
     "@types/fs-extra": "^11.0.2",
     "@types/node": "^20.6.3",
     "@types/react": "^18.2.22",
@@ -36,12 +40,15 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "execa": "5.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "rollup": "^3.29.3",
     "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.5"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.4",
