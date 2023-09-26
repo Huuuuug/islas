@@ -1,0 +1,55 @@
+{
+  "name": "islas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "tsup --watch",
+    "build": "tsup",
+    "preview": "cd build && serve .",
+    "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx ./"
+  },
+  "bin": {
+    "islas": "bin/islas.js"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,tsx,ts}" :[
+      "pnpm run lint"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@types/fs-extra": "^11.0.2",
+    "@types/node": "^20.6.3",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "commitlint": "^17.7.1",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "rollup": "^3.29.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.0.4",
+    "cac": "^6.7.14",
+    "fs-extra": "^11.1.1",
+    "ora": "^7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^4.4.9"
+  }
+}
