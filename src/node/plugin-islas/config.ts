@@ -1,12 +1,12 @@
 import { PACKAGE_ROOT } from 'node/constants';
 import { join, relative } from 'path';
-import type { SiteConifg } from 'shared/types';
+import type { SiteConfig } from 'shared/types';
 import type { Plugin } from 'vite';
 
 const SITE_DATA_ID = 'islas:site-data';
 
 export function pluginConfig(
-  config: SiteConifg,
+  config: SiteConfig,
   restartServer?: () => Promise<void>
 ): Plugin {
   return {

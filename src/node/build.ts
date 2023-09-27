@@ -1,25 +1,23 @@
 import { InlineConfig, build as viteBuild } from 'vite';
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants';
-import ora from 'ora';
+// import ora from 'ora';
 import * as path from 'path';
 import fs from 'fs-extra';
 import { pathToFileURL } from 'url';
-import pluginReact from '@vitejs/plugin-react';
-
 import type { RollupOutput } from 'rollup';
-import { SiteConifg } from 'shared/types';
-import { pluginConfig } from './plugin-islas/config';
+import { SiteConfig } from 'shared/types';
+import { createVitePlugins } from './vitePlugins';
 
 // const dynamicImport = new Function('m', 'return import(m)')
 
-export const okMark = '\x1b[32m✓\x1b[0m';
-
-export async function bundle(root: string, config: SiteConifg) {
-  const resolveViteConfig = (isServer: boolean): InlineConfig => {
+export async function bundle(root: string, config: SiteConfig) {
+  const resolveViteConfig = async (
+    isServer: boolean
+  ): Promise<InlineConfig> => {
     return {
       mode: 'production',
       root,
-      plugins: [pluginReact(), pluginConfig(config)],
+      plugins: await createVitePlugins(config),
       ssr: {
         noExternal: ['react-router-dom']
       },
@@ -38,11 +36,11 @@ export async function bundle(root: string, config: SiteConifg) {
   try {
     // 客户端打包
     const clientBuild = async () => {
-      return viteBuild(resolveViteConfig(false));
+      return viteBuild(await resolveViteConfig(false));
     };
     // 服务端打包
     const serverBuild = async () => {
-      return viteBuild(resolveViteConfig(true));
+      return viteBuild(await resolveViteConfig(true));
     };
     // 防止阻塞
     const [clientBundle, serverBundle] = await Promise.all([
@@ -85,9 +83,9 @@ export async function renerPage(
   await fs.remove(path.join(root, '.temp'));
 }
 
-export async function build(root: string = process.cwd(), config: SiteConifg) {
-  const spinner = ora();
-  spinner.start('building client + server bundles...');
+export async function build(root: string = process.cwd(), config: SiteConfig) {
+  // const spinner = ora();
+  // spinner.start('building client + server bundles...');
 
   // 1. bundle -client 端 + server 端
   const [clientBundle] = await bundle(root, config);
@@ -96,8 +94,4 @@ export async function build(root: string = process.cwd(), config: SiteConifg) {
   // 3. 服务端渲染,产出 HTML
   const { render } = await import(pathToFileURL(serverEntryPath).toString());
   await renerPage(render, root, clientBundle as RollupOutput);
-
-  spinner.stopAndPersist({
-    symbol: okMark
-  });
 }

@@ -36,7 +36,7 @@ export interface UserConfig {
   vite?: ViteConfiguration;
 }
 
-export interface SiteConifg {
+export interface SiteConfig {
   root: string;
   configPath: string;
   siteData: UserConfig;

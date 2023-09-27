@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import { resolve } from 'path';
 import { loadConfigFromFile } from 'vite';
-import type { SiteConifg, UserConfig } from '../shared/types/index';
+import type { SiteConfig, UserConfig } from '../shared/types/index';
 
 type RawConfig =
   | UserConfig
@@ -52,7 +52,7 @@ export async function resolveConfig(
     const userConfig = await (typeof rawConfig === 'function'
       ? rawConfig()
       : rawConfig);
-    const siteConifg: SiteConifg = {
+    const siteConifg: SiteConfig = {
       root,
       configPath,
       siteData: resolveSiteData(userConfig as UserConfig)
