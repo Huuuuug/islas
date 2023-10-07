@@ -1,0 +1,363 @@
+/**
+ * Colors Base
+ *
+ * These are the pure base color presets. Most of the time, you should not be
+ * using these colors directly in the theme but rather use "Colors Theme"
+ * instead because those are "Theme (light or dark)" dependant.
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-c-white: #ffffff;
+  --islas-c-white-soft: #f9f9f9;
+  --islas-c-white-mute: #f1f1f1;
+
+  --islas-c-black: #1a1a1a;
+  --islas-c-black-pure: #000000;
+  --islas-c-black-soft: #242424;
+  --islas-c-black-mute: #2f2f2f;
+
+  --islas-c-gray: #8e8e8e;
+  --islas-c-gray-light-1: #aeaeae;
+  --islas-c-gray-light-2: #c7c7c7;
+  --islas-c-gray-light-3: #d1d1d1;
+  --islas-c-gray-light-4: #e5e5e5;
+  --islas-c-gray-light-5: #f2f2f2;
+  --islas-c-gray-dark-1: #636363;
+  --islas-c-gray-dark-2: #484848;
+  --islas-c-gray-dark-3: #3a3a3a;
+  --islas-c-gray-dark-4: #282828;
+  --islas-c-gray-dark-5: #202020;
+
+  --islas-c-divider-light-1: rgba(60, 60, 60, 0.29);
+  --islas-c-divider-light-2: rgba(60, 60, 60, 0.12);
+  --islas-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+  --islas-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+  --islas-c-indigo: #213547;
+  --islas-c-indigo-soft: #476582;
+  --islas-c-indigo-light: #aac8e4;
+  --islas-c-indigo-lighter: #c9def1;
+  --islas-c-indigo-dark: #1d2f3f;
+  --islas-c-indigo-darker: #14212e;
+
+  --islas-c-text-light-1: var(--islas-c-indigo);
+  --islas-c-text-light-2: rgba(60, 60, 60, 0.7);
+  --islas-c-text-light-3: rgba(60, 60, 60, 0.33);
+  --islas-c-text-light-4: rgba(60, 60, 60, 0.18);
+
+  --islas-c-text-dark-1: rgba(255, 255, 255, 0.87);
+  --islas-c-text-dark-2: rgba(235, 235, 235, 0.6);
+  --islas-c-text-dark-3: rgba(235, 235, 235, 0.38);
+  --islas-c-text-dark-4: rgba(235, 235, 235, 0.18);
+
+  --islas-c-green: #21b8a3;
+  --islas-c-green-light: #41c6b0;
+  --islas-c-green-lighter: #41c6b0;
+  --islas-c-green-dark: #149684;
+  --islas-c-green-darker: #149684;
+  --islas-c-green-dimm: #062521;
+
+  --islas-c-green-dimm-1: rgba(66, 184, 131, 0.5);
+  --islas-c-green-dimm-2: rgba(66, 184, 131, 0.25);
+  --islas-c-green-dimm-3: rgba(66, 184, 131, 0.05);
+
+  --islas-c-blue: #646cff;
+  --islas-c-blue-light: #747bff;
+  --islas-c-blue-lighter: #9499ff;
+  --islas-c-blue-lightest: #bcc0ff;
+  --islas-c-blue-dark: #535bf2;
+  --islas-c-blue-darker: #454ce1;
+  --islas-c-blue-dimm: rgba(100, 108, 255, 0.08);
+
+  --islas-c-yellow: #ffc517;
+  --islas-c-yellow-light: #fcd253;
+  --islas-c-yellow-lighter: #fcfc7c;
+  --islas-c-yellow-darker: #ad850e;
+  --islas-c-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+  --islas-c-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+  --islas-c-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+
+  --islas-c-red: #ed3c50;
+  --islas-c-red-light: #f54e82;
+  --islas-c-red-lighter: #fd1d7c;
+  --islas-c-red-darker: #ab2131;
+  --islas-c-red-dimm-1: rgba(237, 60, 80, 0.5);
+  --islas-c-red-dimm-2: rgba(237, 60, 80, 0.25);
+  --islas-c-red-dimm-3: rgba(237, 60, 80, 0.05);
+}
+
+/**
+ * Colors Theme
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-c-bg: var(--islas-c-white);
+  --islas-c-bg-soft: var(--islas-c-white-soft);
+  --islas-c-bg-mute: var(--islas-c-white-mute);
+  --islas-c-bg-alt: var(--islas-c-white-soft);
+
+  --islas-c-divider: var(--islas-c-divider-light-1);
+  --islas-c-divider-light: var(--islas-c-divider-light-2);
+
+  --islas-c-text-1: var(--islas-c-text-light-1);
+  --islas-c-text-2: var(--islas-c-text-light-2);
+  --islas-c-text-3: var(--islas-c-text-light-3);
+  --islas-c-text-4: var(--islas-c-text-light-4);
+
+  --islas-c-text-code: var(--islas-c-indigo-soft);
+
+  --islas-c-brand: var(--islas-c-green);
+  --islas-c-brand-light: var(--islas-c-green-light);
+  --islas-c-brand-lighter: var(--islas-c-green-lighter);
+  --islas-c-brand-dark: var(--islas-c-green-dark);
+  --islas-c-brand-darker: var(--islas-c-green-darker);
+}
+
+.dark {
+  --islas-c-bg: var(--islas-c-black-soft);
+  --islas-c-bg-soft: var(--islas-c-black-mute);
+  --islas-c-bg-mute: var(--islas-c-gray-dark-3);
+  --islas-c-bg-alt: var(--islas-c-black);
+
+  --islas-c-divider: var(--islas-c-divider-dark-1);
+  --islas-c-divider-light: var(--islas-c-divider-dark-2);
+
+  --islas-c-divider-inverse: var(--islas-c-divider-light-1);
+  --islas-c-divider-inverse-light: var(--islas-c-divider-light-2);
+
+  --islas-c-text-1: var(--islas-c-text-dark-1);
+  --islas-c-text-2: var(--islas-c-text-dark-2);
+  --islas-c-text-3: var(--islas-c-text-dark-3);
+  --islas-c-text-4: var(--islas-c-text-dark-4);
+
+  --islas-c-text-inverse-1: var(--islas-c-text-light-1);
+  --islas-c-text-inverse-2: var(--islas-c-text-light-2);
+  --islas-c-text-inverse-3: var(--islas-c-text-light-3);
+  --islas-c-text-inverse-4: var(--islas-c-text-light-4);
+
+  --islas-c-text-code: var(--islas-c-indigo-lighter);
+}
+
+/**
+ * Typography
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-font-family-base: 'Inter var experimental', 'Inter var', -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --islas-font-family-mono: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/**
+ * Layouts
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-layout-max-width: 1440px;
+}
+
+/**
+ * Component: Code
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-code-line-height: 1.7;
+  --islas-code-font-size: 0.875em;
+
+  --islas-code-block-color: var(--islas-c-text-dark-1);
+  --islas-code-block-bg: #292d3e;
+
+  --islas-code-line-highlight-color: rgba(0, 0, 0, 0.5);
+  --islas-code-line-number-color: var(--islas-c-text-dark-3);
+
+  --islas-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
+  --islas-code-copy-code-active-text: var(--islas-c-text-dark-2);
+}
+
+/**
+ * Icons
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2'/%3E%3C/svg%3E");
+  --islas-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='20' width='20' stroke='rgba(128,128,128,1)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4'/%3E%3C/svg%3E");
+  --islas-icon-tip: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M512 960C264.58 960 64 759.42 64 512S264.58 64 512 64s448 200.58 448 448-200.58 448-448 448z m0-832c-212.08 0-384 171.92-384 384s171.92 384 384 384 384-171.92 384-384-171.92-384-384-384z m0 112c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z m0 160c-17.67 0-32 14.33-32 32v320c0 17.67 14.33 32 32 32 17.67 0 32-14.33 32-32V432c0-17.67-14.33-32-32-32z' fill='%2321b8a3'/%3E%3C/svg%3E");
+}
+
+.dark {
+  --islas-code-block-bg: var(--islas-c-bg-alt);
+}
+
+/**
+ * Z-indexes
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-z-index-local-nav: 10;
+  --islas-z-index-nav: 20;
+  --islas-z-index-layout-top: 30;
+  --islas-z-index-backdrop: 40;
+  --islas-z-index-sidebar: 50;
+  --islas-z-index-footer: 60;
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-button-brand-border: var(--islas-c-brand-light);
+  --islas-button-brand-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-bg: var(--islas-c-brand);
+  --islas-button-brand-hover-border: var(--islas-c-brand-light);
+  --islas-button-brand-hover-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-hover-bg: var(--islas-c-brand-light);
+  --islas-button-brand-active-border: var(--islas-c-brand-light);
+  --islas-button-brand-active-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-active-bg: var(--islas-button-brand-bg);
+
+  --islas-button-alt-border: var(--islas-c-gray-light-3);
+  --islas-button-alt-text: var(--islas-c-text-light-1);
+  --islas-button-alt-bg: var(--islas-c-gray-light-5);
+  --islas-button-alt-hover-border: var(--islas-c-gray-light-3);
+  --islas-button-alt-hover-text: var(--islas-c-text-light-1);
+  --islas-button-alt-hover-bg: var(--islas-c-gray-light-4);
+  --islas-button-alt-active-border: var(--islas-c-gray-light-3);
+  --islas-button-alt-active-text: var(--islas-c-text-light-1);
+  --islas-button-alt-active-bg: var(--islas-c-gray-light-3);
+
+  --islas-button-sponsor-border: var(--islas-c-gray-light-3);
+  --islas-button-sponsor-text: var(--islas-c-text-light-2);
+  --islas-button-sponsor-bg: transparent;
+  --islas-button-sponsor-hover-border: var(--islas-c-sponsor);
+  --islas-button-sponsor-hover-text: var(--islas-c-sponsor);
+  --islas-button-sponsor-hover-bg: transparent;
+  --islas-button-sponsor-active-border: var(--islas-c-sponsor);
+  --islas-button-sponsor-active-text: var(--islas-c-sponsor);
+  --islas-button-sponsor-active-bg: transparent;
+}
+
+.dark {
+  --islas-button-brand-border: var(--islas-c-brand-light);
+  --islas-button-brand-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-bg: var(--islas-c-brand-dark);
+  --islas-button-brand-hover-border: var(--islas-c-brand-lighter);
+  --islas-button-brand-hover-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-hover-bg: var(--islas-c-brand);
+  --islas-button-brand-active-border: var(--islas-c-brand-lighter);
+  --islas-button-brand-active-text: var(--islas-c-text-dark-1);
+  --islas-button-brand-active-bg: var(--islas-button-brand-bg);
+
+  --islas-button-alt-border: var(--islas-c-gray-dark-2);
+  --islas-button-alt-text: var(--islas-c-text-dark-1);
+  --islas-button-alt-bg: var(--islas-c-bg-mute);
+  --islas-button-alt-hover-border: var(--islas-c-gray-dark-2);
+  --islas-button-alt-hover-text: var(--islas-c-text-dark-1);
+  --islas-button-alt-hover-bg: var(--islas-c-gray-dark-2);
+  --islas-button-alt-active-border: var(--islas-c-gray-dark-2);
+  --islas-button-alt-active-text: var(--islas-c-text-dark-1);
+  --islas-button-alt-active-bg: var(--islas-button-alt-bg);
+
+  --islas-button-sponsor-border: var(--islas-c-gray-dark-1);
+  --islas-button-sponsor-text: var(--islas-c-text-dark-2);
+}
+
+/**
+ * Component: Custom Block
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-custom-block-code-font-size: 13px;
+
+  --islas-custom-block-info-border: var(--islas-c-divider-light);
+  --islas-custom-block-info-text: var(--islas-c-text-2);
+  --islas-custom-block-info-bg: var(--islas-c-white-soft);
+  --islas-custom-block-info-code-bg: var(--islas-c-gray-light-4);
+
+  --islas-custom-block-tip-border: var(--islas-c-green-dimm-1);
+  --islas-custom-block-tip-text: var(--islas-c-green-darker);
+  --islas-custom-block-tip-bg: var(--islas-c-green-dimm-3);
+  --islas-custom-block-tip-code-bg: var(--islas-custom-block-tip-bg);
+
+  --islas-custom-block-warning-border: var(--islas-c-yellow-dimm-1);
+  --islas-custom-block-warning-text: var(--islas-c-yellow-darker);
+  --islas-custom-block-warning-bg: var(--islas-c-yellow-dimm-3);
+  --islas-custom-block-warning-code-bg: var(--islas-custom-block-warning-bg);
+
+  --islas-custom-block-danger-border: var(--islas-c-red-dimm-1);
+  --islas-custom-block-danger-text: var(--islas-c-red-darker);
+  --islas-custom-block-danger-bg: var(--islas-c-red-dimm-3);
+  --islas-custom-block-danger-code-bg: var(--islas-custom-block-danger-bg);
+}
+
+.dark {
+  --islas-custom-block-info-border: var(--islas-c-divider-light);
+  --islas-custom-block-info-bg: var(--islas-c-black-mute);
+  --islas-custom-block-info-code-bg: var(--islas-c-gray-dark-4);
+
+  --islas-custom-block-tip-border: var(--islas-c-green-dimm-2);
+  --islas-custom-block-tip-text: var(--islas-c-green-light);
+
+  --islas-custom-block-warning-border: var(--islas-c-yellow-dimm-2);
+  --islas-custom-block-warning-text: var(--islas-c-yellow-light);
+
+  --islas-custom-block-danger-border: var(--islas-c-red-dimm-2);
+  --islas-custom-block-danger-text: var(--islas-c-red-light);
+}
+
+/**
+ * Component: Nav
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-nav-height: var(--islas-nav-height-mobile);
+  --islas-nav-height-mobile: 56px;
+  --islas-nav-height-desktop: 60px;
+}
+
+@media (min-width: 960px) {
+  :root {
+    --islas-nav-height: var(--islas-nav-height-desktop);
+  }
+}
+
+/**
+ * Component: Sidebar
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-sidebar-width: 272px;
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-home-hero-name-color: transparent;
+  --islas-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--islas-c-brand) 30%,
+    #41d1ff
+  );
+
+  --islas-home-hero-image-background-image: none;
+  --islas-home-hero-image-filter: none;
+}
+
+/**
+ * Shadows
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --islas-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --islas-shadow-2: 0 3px 12px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+  --islas-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+  --islas-shadow-4: 0 14px 44px rgba(0, 0, 0, 0.12),
+    0 3px 9px rgba(0, 0, 0, 0.12);
+  --islas-shadow-5: 0 18px 56px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.16);
+}

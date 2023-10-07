@@ -6,4 +6,3 @@ bin
 docs
 e2e
 .temp
-*.d.ts

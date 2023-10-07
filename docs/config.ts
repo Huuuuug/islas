@@ -1,5 +1,21 @@
 import {defineConfig} from '../dist'
 
 export default defineConfig ({
-  title: '1231212311111asdad123',
+  title: '123',
+  themeConfig :{
+    nav: [
+      {
+        text: '主页',
+        link: '/'
+      },
+      {
+        text: '指南',
+        link: '/'
+      },
+      {
+        text: '组件',
+        link: '/'
+      },
+    ]
+  }
 })
