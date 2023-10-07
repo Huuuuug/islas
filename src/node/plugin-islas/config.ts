@@ -1,5 +1,6 @@
 import { PACKAGE_ROOT } from 'node/constants';
 import { join, relative } from 'path';
+import sirv from 'sirv';
 import type { SiteConfig } from 'shared/types';
 import type { Plugin } from 'vite';
 
@@ -50,6 +51,10 @@ export function pluginConfig(
         // 2. 手动调用dev.ts 中的 createServer
         await restartServer();
       }
+    },
+    configureServer(server) {
+      const publicDir = join(config.root, 'public');
+      server.middlewares.use(sirv(publicDir));
     }
   };
 }
