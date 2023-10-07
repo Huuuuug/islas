@@ -1,14 +1,16 @@
 import { visit } from 'unist-util-visit';
 import { fromHtml } from 'hast-util-from-html';
-// import shiki from 'shiki';
+import shiki from 'shiki';
 import type { Text, Root } from 'hast';
-// import type { PluggableList } from 'unified';
+import type { Plugin } from 'unified';
 
-// interface Options {
-//   highlighter: shiki.Highlighter;
-// }
+interface Options {
+  highlighter: shiki.Highlighter;
+}
 
-export const rehypePluginShiki = ({ highlighter }) => {
+export const rehypePluginShiki: Plugin<[Options], import('hast').Root> = ({
+  highlighter
+}) => {
   return (tree: Root) => {
     visit(tree, 'element', (node, index, parent) => {
       // <pre><code>...</code></pre>
