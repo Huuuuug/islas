@@ -4,10 +4,11 @@ import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from './constants';
 import * as path from 'path';
 import fs from 'fs-extra';
 import { pathToFileURL } from 'url';
-import type { RollupOutput } from 'rollup';
 import { SiteConfig } from 'shared/types';
 import { createVitePlugins } from './vitePlugins';
 
+import type { RollupOutput } from 'rollup';
+import type { Route } from './plugin-routes';
 // const dynamicImport = new Function('m', 'return import(m)')
 
 export async function bundle(root: string, config: SiteConfig) {
@@ -17,13 +18,13 @@ export async function bundle(root: string, config: SiteConfig) {
     return {
       mode: 'production',
       root,
-      plugins: await createVitePlugins(config),
+      plugins: await createVitePlugins(config, undefined, isServer),
       ssr: {
         noExternal: ['react-router-dom']
       },
       build: {
         ssr: isServer,
-        outDir: isServer ? '.temp' : 'build',
+        outDir: isServer ? path.join(root, '.temp') : path.join(root, 'build'),
         rollupOptions: {
           input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,
           output: {
@@ -53,33 +54,45 @@ export async function bundle(root: string, config: SiteConfig) {
   }
 }
 export async function renerPage(
-  render: () => string,
+  render: (pagePath: string) => string,
   root: string,
-  clientBundle: RollupOutput
+  clientBundle: RollupOutput,
+  routes: Route[]
 ) {
-  const appHTML = render();
+  // const appHTML = render();
 
   // 获取脚本文件
   const clientChunk = clientBundle.output.find(
     (chunk) => chunk.type === 'chunk' && chunk.isEntry
   );
-  const html = `
-  <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>title</title>
-        <meta name="description content="xxx">
-      </head>
-      <body>
-        <div id="root">${appHTML}</div>
-        <script src="/${clientChunk.fileName}" type="module"></script>
-      </body>
-    </html>
-  `.trim();
-  // 将html字符串写入磁盘 并删除服务端打包产物
-  await fs.writeFile(path.join(root, 'build', 'index.html'), html);
+  console.log('Rendering page in server side...');
+  await Promise.all(
+    routes.map(async (route) => {
+      const routePath = route.path;
+      const appHTML = render(routePath);
+      const html = `
+      <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>title</title>
+            <meta name="description content="xxx">
+          </head>
+          <body>
+            <div id="root">${appHTML}</div>
+            <script src="/${clientChunk.fileName}" type="module"></script>
+          </body>
+        </html>
+      `.trim();
+      const fileName = routePath.endsWith('/')
+        ? `${routePath}index.html`
+        : `${routePath}.html`;
+      await fs.ensureDir(path.join(root, 'build', path.dirname(fileName)));
+      // 将html字符串写入磁盘 并删除服务端打包产物
+      await fs.writeFile(path.join(root, 'build', fileName), html);
+    })
+  );
   await fs.remove(path.join(root, '.temp'));
 }
 
@@ -92,6 +105,12 @@ export async function build(root: string = process.cwd(), config: SiteConfig) {
   // 2. 引入 server-entry 模块
   const serverEntryPath = path.join(root, '.temp', 'ssr-entry.js');
   // 3. 服务端渲染,产出 HTML
-  const { render } = await import(pathToFileURL(serverEntryPath).toString());
-  await renerPage(render, root, clientBundle as RollupOutput);
+  const { render, routes } = await import(
+    pathToFileURL(serverEntryPath).toString()
+  );
+  try {
+    await renerPage(render, root, clientBundle as RollupOutput, routes);
+  } catch (e) {
+    console.log('Render page errot.\n', e);
+  }
 }
