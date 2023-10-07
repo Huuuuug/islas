@@ -4,3 +4,6 @@ pnpm-lock.yaml
 dist
 bin
 docs
+e2e
+.temp
+*.d.ts

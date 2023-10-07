@@ -19,6 +19,7 @@ module.exports = {
     'prettier/prettier': 'error',
     quotes: ['error', 'single'],
     'react/react-in-jsx-scope': 'off',
+    'react/no-unknown-property':'off',
   },
   settings:{
     react:{

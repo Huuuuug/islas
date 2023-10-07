@@ -4,6 +4,8 @@ import { pluginConfig } from './plugin-islas/config';
 import { pluginRoutes } from './plugin-routes';
 import { SiteConfig } from 'shared/types';
 import { createPluginMdx } from './plugin-mdx';
+import pluginUnocss from 'unocss/vite';
+import unocssOptions from './unocssOptions';
 import type { Plugin } from 'vite';
 
 export async function createVitePlugins(
@@ -12,6 +14,7 @@ export async function createVitePlugins(
   isSSR = false
 ) {
   return [
+    pluginUnocss(unocssOptions),
     pluginIndexHtml(),
     pluginReact({
       jsxRuntime: 'automatic'
