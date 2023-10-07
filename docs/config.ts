@@ -10,12 +10,29 @@ export default defineConfig ({
       },
       {
         text: '指南',
-        link: '/'
-      },
-      {
-        text: '组件',
-        link: '/'
-      },
-    ]
+        link: '/guide/'
+      }
+    ],
+    sidebar : {
+      '/guide/': [
+        {
+          text:'教程',
+          items: [
+            {
+              text: '快速上手',
+              link: '/guide/a'
+            },
+            {
+              text:'如何安装',
+              link: '/guide/b'
+            },
+            {
+              text:'注意事项',
+              link: '/guide/c'
+            }
+          ]
+        }
+      ]
+    }
   }
 })

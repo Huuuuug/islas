@@ -13,7 +13,7 @@ export type SidebarItem = {
 
 export interface SidebarGroup {
   text: string;
-  item: SidebarItem[];
+  items: SidebarItem[];
 }
 
 export type Sidebar = {
