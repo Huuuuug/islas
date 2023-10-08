@@ -3,9 +3,10 @@ import { useLocation } from 'react-router-dom';
 import { Sidebar } from '../../components/Sidebar';
 import styles from './index.module.scss';
 import { DocFooter } from '../../components/DocFooter';
+import { Aside } from '../../components/Aside';
 
 export function Doclayout() {
-  const { siteData } = usePageData();
+  const { siteData, toc } = usePageData();
   const sidebarData = siteData.themeConfig?.sidebar || {};
   const { pathname } = useLocation();
 
@@ -17,13 +18,18 @@ export function Doclayout() {
 
   const matchedSidebar = sidebarData[matchedSiderbarKey] || [];
   return (
-    <div>
+    <div className={styles.contentContainer}>
       <Sidebar sidebarData={matchedSidebar} pathname={pathname} />
-      <div className={styles.content}>
-        <div className="islas-doc">
-          <Content />
+      <div className={styles.content} flex="~ 1 shrink-0">
+        <div className={styles.docContent}>
+          <div className="islas-doc">
+            <Content />
+          </div>
+          <DocFooter />
         </div>
-        <DocFooter />
+        <div className={styles.asideContainer}>
+          <Aside headers={toc} />
+        </div>
       </div>
     </div>
   );

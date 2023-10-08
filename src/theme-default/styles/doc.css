@@ -1,6 +1,9 @@
 /**
  * Headings
  * -------------------------------------------------------------------------- */
+.islas-doc {
+  word-wrap: break-word;
+}
 
 .islas-doc h1,
 .islas-doc h2,

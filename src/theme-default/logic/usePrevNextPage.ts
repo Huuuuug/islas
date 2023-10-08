@@ -9,8 +9,6 @@ export function usePrevNextPage() {
   const sidebar = siteData.themeConfig?.sidebar || {};
   const falttenTitles: SidebarItem[] = [];
 
-  console.log(sidebar);
-
   Object.keys(sidebar).forEach((key) => {
     const groups = sidebar[key] || [];
     groups.forEach((group) => {
