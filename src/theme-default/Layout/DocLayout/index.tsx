@@ -6,7 +6,7 @@ import { DocFooter } from '../../components/DocFooter';
 import { Aside } from '../../components/Aside';
 
 export function Doclayout() {
-  const { siteData, toc } = usePageData();
+  const { siteData, toc, pagePath } = usePageData();
   const sidebarData = siteData.themeConfig?.sidebar || {};
   const { pathname } = useLocation();
 
@@ -28,7 +28,7 @@ export function Doclayout() {
           <DocFooter />
         </div>
         <div className={styles.asideContainer}>
-          <Aside headers={toc} />
+          <Aside headers={toc} pagePath={pagePath} />
         </div>
       </div>
     </div>

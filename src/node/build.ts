@@ -20,7 +20,7 @@ export async function bundle(root: string, config: SiteConfig) {
       root,
       plugins: await createVitePlugins(config, undefined, isServer),
       ssr: {
-        noExternal: ['react-router-dom']
+        noExternal: ['react-router-dom', 'lodash-es']
       },
       build: {
         ssr: isServer,
@@ -54,7 +54,7 @@ export async function bundle(root: string, config: SiteConfig) {
   }
 }
 export async function renerPage(
-  render: (pagePath: string) => string,
+  render: (pagePath: string) => Promise<string>,
   root: string,
   clientBundle: RollupOutput,
   routes: Route[]
@@ -69,7 +69,7 @@ export async function renerPage(
   await Promise.all(
     routes.map(async (route) => {
       const routePath = route.path;
-      const appHTML = render(routePath);
+      const appHTML = await render(routePath);
       const html = `
       <!DOCTYPE html>
         <html lang="en">

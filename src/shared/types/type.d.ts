@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 declare module 'islas:site-data' {
   import type { UserConfig } from 'shared/types';
   const siteData: UserConfig;
@@ -9,9 +11,3 @@ declare module 'islas:routes' {
   const routes: RouteObject[];
   export { routes };
 }
-
-declare module '*.module.scss' {
-  const classes: {[key:string]:string};
-  export default classes
-}
-

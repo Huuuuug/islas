@@ -6,8 +6,6 @@ import type { Program } from 'mdast-util-mdxjs-esm';
 import type { Root } from 'hast';
 import type { Plugin } from 'unified';
 
-const slugger = new Slugger();
-
 interface TocItem {
   id: string;
   text: string;
@@ -29,6 +27,8 @@ interface ChildNode {
 export const remarkPluginToc: Plugin<[], Root> = () => {
   return (tree) => {
     const toc: TocItem[] = [];
+    const slugger = new Slugger();
+
     visit(
       tree,
       'heading',
